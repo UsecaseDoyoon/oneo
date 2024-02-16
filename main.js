@@ -37,7 +37,7 @@ function underIndicator(e) {
 }
 
 for(let i = 1; i < tabs.length; i++) {
-  tabs[i].addEventListener("click", function(event){ // 매개변수로 event를 사용한다.
+  tabs[i].addEventListener("click", function(event){ 
     filter(event)
   });
 }
@@ -45,7 +45,7 @@ for(let i = 1; i < tabs.length; i++) {
 
 function addTask() {
     if (taskInput.value === "") return alert ("Please write down your to-do.")
-    let task = {  // 객체.
+    let task = {  
         id: randomIDGenerate(),
         taskContent: taskInput.value,
         isComplete: false       
@@ -65,7 +65,7 @@ function render() {
     list = filterList;
    
   }
-  // 2. 상황에 따라 리스트를 달리 보여준다.
+  // 2. 상황에 따라 리스트...
 
     let resultHTML = '';
     for(let i = 0; i < list.length; i++) {
@@ -85,7 +85,7 @@ function render() {
               <button onclick="deleteTask('${list[i].id}')" class="button-deco">delete</button>
             </div>
           </div>`;
-        } // 1. Check 버튼을 클릭하는 순간 onclick 이벤트에 이해서 toggleComplete 실행된다. 그 순간 id 값이랑 같이 가져간다.
+        } 
     }
     document.getElementById("task-board").innerHTML = resultHTML;
 }
@@ -94,10 +94,9 @@ function toggleComplete(id) {   //
     console.log("체크!") // 
     console.log("id:", id) // 
 
-    for(let i = 0; i < taskList.length; i++) {   // 3. 위의 id 값을 가지고 taskList를 돌리면서 이 id 가지고 있는 건 누구인지 찾는다.
+    for(let i = 0; i < taskList.length; i++) {   
         if (taskList[i].id == id) {
-            taskList[i].isComplete = !taskList[i].isComplete //true; (x) 체크 버튼을 다시 누르면 그 전 상태로 돌아올 수도 있어야 한다.  // 4. 찾으면 if 문에서 isComplete를 true로 바꿔준다.
-            break;  // 5. 아이템을 찾는 순간 빠져나올 수 있도록 for 문을 종료한다.
+            taskList[i].isComplete = !taskList[i].isComplete 
         }
     }
     filter();    // 
@@ -125,11 +124,10 @@ function filter(event) {
   }
   filterList = [];
   if (mode === "all") {
-    // 전체 리스트를 보여준다.
-    render() // 전체 리스트를 보여주고 있다.
+    
+    render() // 전체 리스트를 보여줘.
   } else if (mode === "ongoing") {
-    // 진행 중인 아이템을 보여준다.
-    // task.isComplete = false 값을 진행중이라고 생각.
+    
     for(let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete === false) {
         filterList.push(taskList[i])
